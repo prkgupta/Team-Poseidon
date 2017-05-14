@@ -1,0 +1,8 @@
+node_modules
+db
+.idea
+config.codekit
+.DS_Store
+dist
+debug
+*.log
