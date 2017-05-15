@@ -6,3 +6,5 @@ config.codekit
 dist
 debug
 *.log
+.nyc_output
+coverage

@@ -63,7 +63,22 @@
     "gulp-shell": "^0.3.0",
     "mocha": "^3.4.1",
     "mongobackup": "^0.1.8",
+    "nyc": "^10.3.2",
     "yargs": "^3.4.4"
+  },
+  "nyc": {
+    "exclude": [
+      "test",
+      "test{,-*}.js",
+      "**/*.test.js",
+      "**/__tests__/**",
+      "**/node_modules/**",
+      "**/bower_components/**",
+      "build",
+      "**/*min*",
+      "public",
+      "gulpfile.js"
+    ]
   },
   "engines": {
     "node": "0.10.x"
