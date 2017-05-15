@@ -1,4 +1,5 @@
 // gulpfile.js
+const eslint = require('gulp-eslint');
 const gulp = require('gulp');
 const child_process = require('child_process');
 const browserSync = require('browser-sync');
@@ -14,6 +15,7 @@ const checkPages = require('check-pages');
 const apiDoc = require('gulp-apidoc');
 const deploy = require('gulp-gh-pages');
 const open = require('gulp-open');
+const del = require('del');
 
 const exec = require('child_process').exec;
 
@@ -38,9 +40,14 @@ function execute(command, callback) {
  */
 
 gulp.task('clean', function () {
+    del(['dist', 'build', 'public/javascripts/vendor.*']);
 });
 
-gulp.task('lint', function() {
+gulp.task('lint', () => {
+    return gulp.src(['**/*.js','!node_modules/**', '!public/plugins/**', '!client/bower_components/**', '!**/*min*'])
+        .pipe(eslint())
+        .pipe(eslint.format());
+        //.pipe(eslint.failAfterError());
 });
 
 gulp.task('vendor', function() {
@@ -58,7 +65,7 @@ gulp.task('vendor', function() {
 //gulp.task('build', ['vendor'], function() {
 gulp.task('build-concat', ['vendor'], function() {
   return gulp.src('./public/stylesheets/*.css')
-	.pipe(minifyCss({keepBreaks:false}))
+	.pipe(minifyCSS({keepBreaks:false}))
     	.pipe(rename('style.min.css'))
     	.pipe(gulp.dest('./build/concat/stylesheets/'));
 	});
@@ -74,7 +81,7 @@ gulp.task('compress', function() {
 
 gulp.task('build', ['compress'], function() {
   return gulp.src('./public/stylesheets/*.css')
-    .pipe(minifyCss({keepBreaks:false}))
+    .pipe(minifyCSS({keepBreaks:false}))
     .pipe(rename(function (path) {
         path.basename += ".min";
     }))
