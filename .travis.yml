@@ -3,6 +3,7 @@ node_js:
 - '7'
 notifications:
   slack: cse112teamposeidon:tVMqh5CqKEL38KURmaUTv2Dn
+script: npm run-script e2e
 deploy:
   provider: heroku
   api_key:
