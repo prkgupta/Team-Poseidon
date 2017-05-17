@@ -8,7 +8,7 @@
     "postinstall": "node nightwatch.conf.BASIC.js",
     "test": "mocha --reporter nyan --compilers js:babel-register --require babel-polyfill",
     "testw": "mocha --reporter nyan --compilers js:babel-register --require babel-polyfill -w",
-    "e2e": "./node_modules/.bin/nightwatch --config nightwatch.conf.BASIC.js"
+    "e2e": "./node_modules/.bin/nightwatch -e chrome,ie11,android_s4_emulator,iphone_6_simulator"
   },
   "dependencies": {
     "async": "^0.9.0",
@@ -42,7 +42,6 @@
     "request": "^2.69.0",
     "sendgrid": "^1.6.0",
     "serve-favicon": "^2.2.1",
-    "selenium-download": "^2.0.10",
     "socket.io": "^1.4.5",
     "underscore": "^1.8.1"
   },
@@ -70,6 +69,7 @@
     "mongobackup": "^0.1.8",
     "nightwatch": "^0.9.15",
     "nyc": "^10.3.2",
+    "selenium-download": "^2.0.10",
     "yargs": "^3.4.4"
   },
   "nyc": {

@@ -1,8 +1,15 @@
 language: node_js
+before_scripts:
+  - python -m SimpleHTTPServer & # server for nightwatch tests
+  - sleep 2
 node_js:
 - '7'
 notifications:
   slack: cse112teamposeidon:tVMqh5CqKEL38KURmaUTv2Dn
+addons:
+  sauce_connect:
+    username: "roym6"
+    access_key: "8060994f-962e-4551-9215-4cc3ad173e4c"
 script: npm run-script e2e
 deploy:
   provider: heroku
