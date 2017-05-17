@@ -1,10 +1,10 @@
 language: node_js
+jdk: oraclejdk8
 before_scripts:
   - python -m SimpleHTTPServer & # server for nightwatch tests
   - sleep 3
 node_js:
 - '7'
-jdk: oracle8jdk
 notifications:
   slack: cse112teamposeidon:tVMqh5CqKEL38KURmaUTv2Dn
 addons:
