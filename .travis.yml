@@ -1,6 +1,6 @@
 language: node_js
-jdk: oraclejdk8
 before_scripts:
+  - jdk_switcher use oraclejdk8
   - python -m SimpleHTTPServer & # server for nightwatch tests
   - sleep 3
 node_js:
