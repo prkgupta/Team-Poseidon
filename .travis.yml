@@ -1,3 +1,4 @@
+dist: trusty
 language: node_js
 before_scripts:
   - jdk_switcher use oraclejdk8
