@@ -1,7 +1,7 @@
 language: node_js
 before_scripts:
   - python -m SimpleHTTPServer & # server for nightwatch tests
-  - sleep 2
+  - sleep 3
 node_js:
 - '7'
 notifications:
