@@ -4,6 +4,7 @@ before_scripts:
   - sleep 3
 node_js:
 - '7'
+jdk: oracle8jdk
 notifications:
   slack: cse112teamposeidon:tVMqh5CqKEL38KURmaUTv2Dn
 addons:
