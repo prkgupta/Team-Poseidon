@@ -1,7 +1,7 @@
 require('env2')('simple.env'); // optionally store your environment variables in .env
 const PKG = require('./package.json'); // so we can get the version of the project
 const BINPATH = './node_modules/nightwatch/bin/'; // change if required.
-const SCREENSHOT_PATH = "./screenshots/" + PKG.version + "/";
+const SCREENSHOT_PATH = "./screenshots/e2e/" + PKG.version + "/";
 const TRAVIS_JOB_NUMBER = process.env.TRAVIS_JOB_NUMBER;
 
 const config = { // we use a nightwatch.conf.js file so we can include comments and helper functions

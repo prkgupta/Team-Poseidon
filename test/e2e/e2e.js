@@ -5,8 +5,10 @@ module.exports = { // adapted from: https://git.io/vodU0
     browser
       .url('http://localhost:4000')
       .waitForElementVisible('body', 1000)
+      .saveScreenshot('localhost')
+      .assert.containsText('tryBtn', 'Try It Today')
       .useXpath()
-      .click("//a[text()='TRY IT TODAY']")
+      .click("//a[normalize-space(.)='Try It Today']")
       .useCss()
       .waitForElementVisible('body', 1000)
       .verify.visible('#companyName')
