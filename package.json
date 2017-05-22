@@ -8,7 +8,8 @@
     "postinstall": "node nightwatch.conf.js",
     "test": "mocha --reporter nyan --compilers js:babel-register --require babel-polyfill",
     "testw": "mocha --reporter nyan --compilers js:babel-register --require babel-polyfill -w",
-    "e2e": "./node_modules/.bin/nightwatch -e chrome,ie11,android_s4_emulator,iphone_6_simulator"
+    "e2e": "./node_modules/.bin/nightwatch -e chrome,ie11,android_s4_emulator,iphone_6_simulator",
+    "e2esimple": "./node_modules/.bin/nightwatch -e chrome"
   },
   "dependencies": {
     "async": "^0.9.0",

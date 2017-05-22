@@ -4,8 +4,12 @@ module.exports = { // adapted from: https://git.io/vodU0
   'Poseidon': function(browser) {
     browser
       .url('http://localhost:4000')
-      .waitForElementVisible('body', 5000)
-      .saveScreenshot('localhost')
+      .waitForElementVisible('body', 1000)
+      .useXpath()
+      .click("//a[text()='TRY IT TODAY']")
+      .useCss()
+      .waitForElementVisible('body', 1000)
+      .verify.visible('#companyName')
       .end();
   }
 };
