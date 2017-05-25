@@ -37,7 +37,7 @@ const config = { // we use a nightwatch.conf.js file so we can include comments 
       },
       "desiredCapabilities": {
         "tunnel-identifier": process.env.TRAVIS_JOB_NUMBER, // needed for sauce_connect, testing localhost on saucelabs
-        build: 'build-${process.env.TRAVIS_JOB_NUMBER}'
+        build: 'build-${TRAVIS_JOB_NUMBER}'
       }
     },
     "local": {
