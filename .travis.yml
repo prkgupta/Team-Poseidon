@@ -1,18 +1,15 @@
-dist: trusty
 language: node_js
-before_scripts:
-  - jdk_switcher use oraclejdk8
-  - python -m SimpleHTTPServer & # server for nightwatch tests
-  - sleep 3
 node_js:
-- '7'
+  - '7'
 notifications:
   slack: cse112teamposeidon:tVMqh5CqKEL38KURmaUTv2Dn
 addons:
   sauce_connect:
     username: "roym6"
     access_key: "8060994f-962e-4551-9215-4cc3ad173e4c"
-script: npm run-script e2e
+script:
+  npm run start &
+  npm run e2esimple
 deploy:
   provider: heroku
   api_key:
