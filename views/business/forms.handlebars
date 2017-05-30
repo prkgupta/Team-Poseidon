@@ -9,14 +9,14 @@
 
 <section class="content">
     <form method="POST">
-        <textarea id="fill-me-in"></textarea>
+        <div id="fill-me-in"></div>
     </form>
     {{>scripts}}
-    <script src="/plugins/formBuilder/form-builder.js"></script>
-    <script src="/plugins/jQueryUI/jquery-ui.js"></script>
-    <link rel="stylesheet" type="text/css" href="/plugins/formBuilder/form-builder.css">
+
     <script>
-        $("#fill-me-in").formBuilder();
+        $(function() {
+            $('#fill-me-in').formBuilder();
+        });
     </script>
 </section>
 
