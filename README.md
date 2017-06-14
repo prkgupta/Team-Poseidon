@@ -34,7 +34,7 @@ This will run mocha and unit tests
 
 Push to testing environment
 ----------------------------
-1. Simply push your experimental changes to the ``develop`` branch.
+1. Push your experimental changes to the ``develop`` branch to be tested before pushing to master branch
 2. Changes may be view on the [staging site](http://fubar-staging.herokuapp.com/).
 
 Logging in as Peter
