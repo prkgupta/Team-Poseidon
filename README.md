@@ -1,13 +1,14 @@
 # Enque web-app [ ![Travis CI Status for CSE112-Team-Poseidon/web-app](https://travis-ci.org/travis-ci/travis-web.svg?branch=master)](https://travis-ci.org/)
 
-First Run
+Enviroment Setup
 ----------------------------
 1. Setup Account with [mLab](https://mlab.com/)
 2. Copy mongoDB access point into app.js:
 
         $ var mongoURI = process.env.MONGOLAB_URI || 'YOUR MONGODB CONNECTION ON mLAB';
         
-2. Install [Node.js](http://nodejs.org/download/)
+2. Install [Node.js](http://nodejs.org/download/)  
+    To check if you have node installed, just type node at your terminal. If you see a >, then you have it. If not, you probably don't have it
 3. Navigate to the root directory
 4. Install npm dependencies:
 
