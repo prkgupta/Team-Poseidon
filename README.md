@@ -30,7 +30,7 @@ Testing
 ```bash
 npm test
 ```
-This will run mocha and unit tests
+This will run mocha and unit tests. Whenever you make a change to a file, mocha will restart your tests. So you don't have to keep restarting mocha all the time.
 
 Push to testing environment
 ----------------------------
