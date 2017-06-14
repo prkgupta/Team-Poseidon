@@ -9,15 +9,20 @@ Enviroment Setup
         
 2. Install [Node.js](http://nodejs.org/download/)  
     To check if you have node installed, just type node at your terminal. If you see a >, then you have it. If not, you probably don't have it
-3. Navigate to the root directory
-4. Install npm dependencies:
+    
+3. Clone Repository
+
+	`` git clone https://github.com/prkgupta/Poseidon.git poseidon ``
+	
+4. Navigate to the root directory
+5. Install npm dependencies:
 
         $ npm install
         $ npm install --global gulp
 
-5. Use ``npm run start`` to run the server
-6. Use ``gulp`` to run the application
-7. Navigate your browser to [http://localhost:4000](http://localhost:4000/)
+6. Use ``npm run start`` to run the server
+7. Use ``gulp`` to run the application
+8. Navigate your browser to [http://localhost:4000](http://localhost:4000/)
 
 Testing
 ----------------------------
