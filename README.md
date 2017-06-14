@@ -15,8 +15,16 @@ Enviroment Setup
         $ npm install
         $ npm install --global gulp
 
+5. Use ``npm run start`` to run the server
 6. Use ``gulp`` to run the application
 7. Navigate your browser to [http://localhost:4000](http://localhost:4000/)
+
+Testing
+----------------------------
+```bash
+npm test
+```
+This will run mocha and unit tests
 
 Push to testing environment
 ----------------------------
@@ -32,19 +40,4 @@ In order to login as peter, use the following credentials
 	
 The live app can be found [here](http://team-fubar.herokuapp.com/).
 	
-Slack Integration can be found here
-
-	team-fubar.slack.com
-	
-	username: gev@ucsd.edu
-	password: teamfubar
-
-Access to CI platform on Codeship
-----------------------------
-Go to the [Codeship](http://codeship.io) website.
-Use the following credentials:
-
-	username: gev@ucsd.edu
-	password: teamfubar
-
 Click the restart button on the latest build to rebuild it.
