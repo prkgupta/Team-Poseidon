@@ -8,6 +8,7 @@ Enviroment Setup
         $ var mongoURI = process.env.MONGOLAB_URI || 'YOUR MONGODB CONNECTION ON mLAB';
         
 2. Install [Node.js](http://nodejs.org/download/)  
+
     To check if you have node installed, just type node at your terminal. If you see a >, then you have it. If not, you probably don't have it
     
 3. Clone Repository
