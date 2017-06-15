@@ -33,13 +33,14 @@ module.exports = router;
  */
 function updateBusiness(req, res, next) {
     //Simple case: first time on the page
+    var mongo = require('mongodb');
+    var o_id = new mongo.ObjectID(req.params.id);
     if (!req.session.business) {
-        console.log(req.db.get('businesses'));
-        req.db.get('businesses').findById(req.params.id, function (err, business) {
+        req.db.get('businesses').find({'_id': o_id}, function (err, business) {
             if (err) {
                 return next(err);
             }
-            req.session.business = business;
+            req.session.business = business[0];
             req.session.save(function (err) {
                 if (err) {
                     return next(err);
@@ -54,12 +55,11 @@ function updateBusiness(req, res, next) {
             if (err) {
                 return next(err);
             }
-            console.log(req.db.get('businesses'));
-            req.db.get('businesses').findById(req.params.id, function (err, business) {
+            req.db.get('businesses').find({'_id': o_id}, function (err, business) {
                 if (err) {
                     return next(err);
                 }
-                req.session.business = business;
+                req.session.business = business[0];
                 req.session.save(function (err) {
                     if (err) {
                         return next(err);
@@ -70,12 +70,11 @@ function updateBusiness(req, res, next) {
         });
     } else { //Everything looks good, do nothing
         //next();
-        console.log(req.db.get('businesses'));
-        req.db.get('businesses').findById(req.params.id, function (err, business) {
+        req.db.get('businesses').find({'_id': o_id}, function (err, business) {
             if (err) {
                 return next(err);
             }
-            req.session.business = business;
+            req.session.business = business[0];
             req.session.save(function (err) {
                 if (err) {
                     return next(err);
