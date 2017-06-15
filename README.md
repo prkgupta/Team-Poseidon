@@ -1,3 +1,10 @@
+APPLICATION OVERVIEW
+----------------------------
+Dashboard will display Company Name and Contact Information  
+Graphs of data will be generated upon user selection of categories where user can choose timeframe of interest.  
+Forms in the formbuilder are now saved to the database.  
+Users can now check in to an appointment on the sign-in screen and this information is saved in the database.  
+
 # web-app [ ![Codeship Status for CSE112-GoldTeam/web-app](https://codeship.com/projects/5f33bf40-cb9d-0133-dbda-4a84e368cd36/status?branch=master)](https://codeship.com/projects/59497)
 
 First Run
