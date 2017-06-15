@@ -20,6 +20,11 @@ function initializePage() {
   $("button.tryBtn").click(tryClick);
 }
 
+function checkinClick(e) {
+    console.log("Analytics for check in");
+    mixpanel.track("Check In");
+}
+
 function sign1Click(e) {
   mixpanel.track("Sign Up 1 Clicks");
   debug("SignUp1.");
@@ -57,7 +62,7 @@ function tryClick(e) {
   function homeview()
   {
       debug("Home Page Viewed");
-      mixpanel.track('Home Page Views', 
+      mixpanel.track('Home Page Views',
       {
           'page name' : document.title,
           'url' : window.location.pathname
@@ -66,7 +71,7 @@ function tryClick(e) {
   function registerview()
   {
       debug("Register Page Viewed");
-      mixpanel.track('Register Page Views', 
+      mixpanel.track('Register Page Views',
       {
           'page name' : document.title,
           'url' : window.location.pathname
@@ -76,7 +81,7 @@ function tryClick(e) {
   function loginview()
   {
       debug("Login Page Viewed");
-      mixpanel.track('Login Page Views', 
+      mixpanel.track('Login Page Views',
       {
           'page name' : document.title,
           'url' : window.location.pathname

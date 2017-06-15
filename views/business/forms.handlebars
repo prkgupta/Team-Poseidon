@@ -14,8 +14,33 @@
     {{>scripts}}
 
     <script>
+        var options = {
+            subtypes: {
+                text: ['datetime-local']
+            },
+            onSave: function(e, formData) {
+                        console.log(formData);
+
+                        var json = {
+                            business: findID,
+                            fields: formData
+                        };
+
+                        $.ajax({
+                            url:'/api/m/form',
+                            type:'POST',
+                            data: JSON.stringify(json),
+                            contentType:'application/json',
+                            dataType:'json',
+                            success:function(){
+                                alert('Form Submitted!');
+                            }
+                        });
+                    }
+        };
+
         $(function() {
-            $('#fill-me-in').formBuilder();
+            $('#fill-me-in').formBuilder(options);
         });
     </script>
 </section>

@@ -5,12 +5,99 @@
 </section>
 
 <section class="content">
-    {{#if message}}
-        <div class="alert alert-danger">{{message}}</div>
-    {{/if}}
 
-    <div class="pull-left" style = "width: 50%; margin: 0 auto;">
-        <img src="http://i25.photobucket.com/albums/c97/evilsmith/resizeAnalytics_zpsrfxnhb9b.png" alt="Analytics">
+    {{#message}}
+        <div class="alert alert-danger">{{message}}</div>
+    {{/message}}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-success box-solid">
+                <div class="box-header with-border" data-widget="collapse">
+                    <i class="fa fa-minus" style="display: none"></i>
+                    <h3 class="box-title">Example Co.</h3>
+                </div> <!-- /.box-header -->
+                <div class="box-body">
+                    <table style="width:100%">
+                        <colgroup>
+                            <col span="2" class="col-md-6">
+                        </colgroup>
+                        <tr>
+                            <td>Company Name: Example Co.</td>
+                            <td>Address: 9450 Gilman Dr. San Diego, CA 92092</td>
+                        </tr>
+
+                        <tr>
+                            <td>Owner: Team Poseidon</td>
+                            <td>Description: Web developer co</td>
+                        </tr>
+                        <tr>
+                            <td>Contact: 555-555-5555</td>
+                        </tr>
+                    </table>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div><!-- /.col -->
     </div>
+</section>
+
+
+<!--Analytics-->
+<script src='/javascripts/analytics.js'></script>
+
+<div>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="https://cdn.mxpnl.com/libs/mixpanel-platform/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.css">
+    <script src="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.js"></script>
+</div>
+<div class="mixpanel-platform-body">
+    <div class="">
+        <div id="eventSelect" style="float: left;"></div>
+        <div id="by" class="mixpanel-platform-label" style="margin-left: 10px; display: none;">by</div>
+        <div id="propSelect" style="float: left;"></div>
+        <div id="dateSelect" style="float: right;"></div>
+        <div style="clear: both;"></div>
+        <div id="graph"></div>
+    </div>
+    <div id="table"></div>
+    <script>
+        MP.api.setCredentials("efa2485252acd5e41711ceb71ec5285e", "e48ded64efa367831e11cfd37ee276c0")
+
+        var eventSelect = $('#eventSelect').MPEventSelect();
+        var propSelect  = $('#propSelect').MPPropertySelect();
+        var dateSelect  = $('#dateSelect').MPDatepicker();
+        var eventGraph  = $('#graph').MPChart({chartType: 'line'});
+        var eventTable  = $('#table').MPTable({
+            showPercentages: true,
+            firstColHeader: 'Event'
+        });
+
+        var runQuery = function() {
+            var eventName = eventSelect.MPEventSelect('value'),
+                    propName  = propSelect.MPPropertySelect('value'),
+                    dateRange = dateSelect.MPDatepicker('value');
+
+            if (eventName) {
+                MP.api.segment(eventName, propName, dateRange).done(function(results) {
+                    eventGraph.MPChart('setData', results);
+                    eventTable.MPTable('setData', results);
+                });
+            }
+        };
+        eventSelect.on('change', function(e, eventName) {
+            propSelect.MPPropertySelect('setEvent', eventName);
+            $("#by").show();
+            runQuery();
+        });
+        propSelect.on('change', runQuery);
+        dateSelect.on('change', runQuery);
+    </script>
+</div>
 
 </section>
+
+<style>
+    .select_button {
+        height: 32px !important;
+    }
+</style>

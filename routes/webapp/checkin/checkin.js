@@ -67,11 +67,13 @@ exports.post = function (req, res, next) {
     var inputLast = req.body.inputLast;
     var inputPhone = req.body.inputPhone.replace(/[\(\)-\s]/g, '');
 
-    appointments.find({
-        business: ObjectID(req.params.id), 
+    console.log("Data");
+    console.log(inputFirst, inputLast, inputPhone, req.params.id);
+    appointments.insert({
+        business: ObjectID(req.params.id),
         fname: inputFirst, 
         lname: inputLast, 
-        phone: inputPhone
+        phone: +inputPhone
     }, function(err, result) {
 
         //TODO: Uncomment this when front end is actually tied to the DB and checking if the appointment is valid
@@ -93,7 +95,7 @@ exports.post = function (req, res, next) {
 
         if (result.length === 0) {
             res.render('checkin/checkin', {
-                error: 'No appointment found',
+                error: 'Could not check in',
                 inputFirst: inputFirst,
                 inputLast: inputLast,
                 inputPhone: inputPhone,
@@ -106,58 +108,9 @@ exports.post = function (req, res, next) {
                 containerText: style.rgbObjectToCSS(business.style.containerText),
                 containerBg: style.rgbObjectToCSS(business.style.containerBg)
             });
-            return;
         }
         else {
-            var appt = result[0];
-            var apptID = appt._id;
-
-            req.session.appointmentId = apptID;
-            var currentTime = new Date();
-            req.session.save(function (err) {
-                if (err) {
-                    console.error('Session save error:', err);
-                }
-
-                var newAppointment = {
-                    visitor: inputFirst + " " + inputLast,
-                    apptTime: formatDate(appt.date),
-                    currentTime: formatDate(currentTime),
-                    status: 'Lobby'
-                }
-
-                employees.find({
-                    business: appt.business,
-                    _id: appt.employee
-                }, function (err, results) {
-                    newAppointment.doctor = results[0].fname;
-                    io.emit('checkin', newAppointment);
-                });
-
                 res.redirect('done');
-            });
-                    //Update the state of the appointment
-            req.db.get('appointments').updateById(req.session.appointmentId, {
-                $set: {
-                    state: 'lobby',
-                    checkin: currentTime
-                }
-            }, function (err) {
-                if (err) {
-                    return next(err);
-                }
-            });
-        }
-
-        function formatDate (date) {
-            var unformattedApptTime = new Date(date);
-            var formattedHour = unformattedApptTime.getHours() > 12 ? unformattedApptTime.getHours() % 12 : unformattedApptTime.getHours();
-            var formattedMinutes = unformattedApptTime.getMinutes();
-            var ampm = unformattedApptTime.getHours() > 12 ? " PM" : " AM";
-            var formattedApptTime = formattedHour + ":" + formattedMinutes + ampm;
-
-            return formattedApptTime;
-        }
-
-    });
-};
+            }
+        });
+    };
