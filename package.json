@@ -5,8 +5,11 @@
   "scripts": {
     "build": "gulp",
     "start": "node ./bin/www",
+    "postinstall": "node nightwatch.conf.js",
     "test": "mocha --reporter nyan --compilers js:babel-register --require babel-polyfill",
-    "testw": "mocha --reporter nyan --compilers js:babel-register --require babel-polyfill -w"
+    "testw": "mocha --reporter nyan --compilers js:babel-register --require babel-polyfill -w",
+    "e2e": "./node_modules/.bin/nightwatch -e chrome,ie11,android_s4_emulator,iphone_6_simulator",
+    "e2esimple": "./node_modules/.bin/nightwatch -e chrome"
   },
   "dependencies": {
     "async": "^0.9.0",
@@ -16,20 +19,18 @@
     "connect-flash": "^0.1.1",
     "cookie-parser": "~1.3.3",
     "debug": "~2.1.1",
+    "env2": "^2.2.0",
     "express": "~4.11.1",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.10.3",
     "express.io": "^1.1.13",
     "express3-handlebars": "^0.5.2",
-    "formBuilder": "^2.5.0",
     "gm": "^1.17.0",
     "gulp-concat": "^2.5.2",
     "gulp-rename": "^1.2.0",
     "gulp-uglify": "^1.1.0",
     "hjs": "~0.0.6",
     "imgur": "^0.1.7",
-    "jquery": "^3.2.1",
-    "jquery-ui": "^1.12.1",
     "mongodb": "*",
     "monk": "*",
     "morgan": "~1.5.1",
@@ -53,6 +54,7 @@
     "chai": "^3.5.0",
     "check-pages": "^0.7.1",
     "del": "^2.2.2",
+    "env2": "^2.2.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.1.3",
     "eslint-plugin-import": "^2.2.0",
@@ -66,7 +68,9 @@
     "gulp-shell": "^0.3.0",
     "mocha": "^3.4.1",
     "mongobackup": "^0.1.8",
+    "nightwatch": "^0.9.15",
     "nyc": "^10.3.2",
+    "selenium-download": "^2.0.10",
     "yargs": "^3.4.4"
   },
   "nyc": {
@@ -84,6 +88,6 @@
     ]
   },
   "engines": {
-    "node": "6.10.0"
+    "node": "0.10.x"
   }
 }
