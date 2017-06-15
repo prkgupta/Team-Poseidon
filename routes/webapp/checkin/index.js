@@ -34,6 +34,7 @@ module.exports = router;
 function updateBusiness(req, res, next) {
     //Simple case: first time on the page
     if (!req.session.business) {
+        console.log(req.db.get('businesses'));
         req.db.get('businesses').findById(req.params.id, function (err, business) {
             if (err) {
                 return next(err);
@@ -53,6 +54,7 @@ function updateBusiness(req, res, next) {
             if (err) {
                 return next(err);
             }
+            console.log(req.db.get('businesses'));
             req.db.get('businesses').findById(req.params.id, function (err, business) {
                 if (err) {
                     return next(err);
@@ -68,6 +70,7 @@ function updateBusiness(req, res, next) {
         });
     } else { //Everything looks good, do nothing
         //next();
+        console.log(req.db.get('businesses'));
         req.db.get('businesses').findById(req.params.id, function (err, business) {
             if (err) {
                 return next(err);

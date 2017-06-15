@@ -59,8 +59,10 @@ exports.createForm = function (req, res, next) {
     // grab our db object from the request
     var db = req.db;
     var forms = db.get('forms');
-
+    var ObjectID = require('mongodb').ObjectID;
     // query to create entry in collection
+
+    req.body.business = ObjectID(req.user.business);
     forms.insert(req.body, function (err, doc) {
         if (err) {
             return next(err);

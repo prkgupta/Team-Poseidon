@@ -19,7 +19,6 @@ var style = require('./../../../lib/style.js');
 var request = require('request');
 
 exports.get = function (req, res, next) {
-
     var business = req.session.business;
     //
     //var slackOptions = {
