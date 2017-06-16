@@ -30,7 +30,7 @@ app.io = require('socket.io')();
 
 global.__base = __dirname + '/';
 
-var mongoURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017';
+var mongoURI = process.env.MONGODB_URI || 'mongodb://default:default@ds129422.mlab.com:29422/cse112-testing';
 
 console.log('Connecting to DB: ' + mongoURI);
 var db = monk(mongoURI);
