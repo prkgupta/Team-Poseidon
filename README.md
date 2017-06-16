@@ -1,5 +1,14 @@
 # Enque web-app [ ![Travis CI Status for CSE112-Team-Poseidon/web-app](https://travis-ci.org/travis-ci/travis-web.svg?branch=master)](https://travis-ci.org/)
 
+APPLICATION OVERVIEW
+----------------------------  
+Create an account with a company name.  
+Dashboard will display Company Name and Contact Information  
+Graphs of data will be generated upon user selection of categories where user can choose timeframe of interest.  
+Forms in the formbuilder are now saved to the database.  
+Users can now check in to an appointment on the sign-in tab and this information is saved in the database.  
+
+
 Enviroment Setup
 ----------------------------
 1. Setup Account with [mLab](https://mlab.com/)
